@@ -1,0 +1,48 @@
+import opc
+import time
+
+leds = [(0,0,0)]*360
+
+client = opc.Client('localhost:7890')
+
+print("choose a colour from the list")
+print('1. Red')
+print('2. Green')
+print('3. Blue')
+print('4. White')
+print('5. Orange')
+
+choice = int(input())
+
+if choice == 1:
+	leds = [(255,0,0)]*360
+elif choice == 2:
+	leds = [(0,255,0)]*360
+elif choice == 3:
+	leds = [(0,0,255)]*360
+elif choice == 4:
+	leds = [(255,255,255)]*360
+elif choice == 5:
+	leds = [(220,100,30)]*360
+else:
+	print("no such number please start again")
+
+client.put_pixels(leds)
+client.put_pixels(leds)
+
+time.sleep(2)
+n = 0
+for led in range(0, len(leds), 3):
+	leds[led] = (n,n,n)
+	n += 3
+
+	client.put_pixels(leds)
+	time.sleep(0.1)
+
+stripes = leds #save the stripey leds in a variable
+
+while True:
+	client.put_pixels(stripes)
+	time.sleep(1)
+	client.put_pixels([(0,255,0)]*360)
+	time.sleep(1)
