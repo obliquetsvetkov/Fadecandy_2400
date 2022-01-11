@@ -38,4 +38,10 @@ while led<60: #scroll all rows at the same time
     leds[led+300] = (0,0,255)
     client.put_pixels(leds)
     time.sleep(.1)
-    led = led + 1    
+    led = led + 1
+
+# refactor the last example to use less code
+# reverse the last example.
+# do a scroll from the middle to the outside - two pixels moving away from each other.
+# reverse the scroll from the middle
+# do a snake, 5 pixels long, returns to start when it hits the end
