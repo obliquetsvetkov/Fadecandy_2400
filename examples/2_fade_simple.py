@@ -13,7 +13,7 @@ while True:
         r,g,b = led[1]              # this points to the second element in led - the (R,G,B) tuple.
         r = r+fade_amount
         g = g+fade_amount
-        b = b+fade_amount
+        #b = b+fade_amount
 
         new_colour = (r,g,b)            # create new tuple containing the updated values
         led_list[led[0]] = new_colour   # place it in the original list at index led_num.
