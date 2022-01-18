@@ -50,7 +50,7 @@ while True:                         #do this forever:
     rand_color = (random.randint(0,255),random.randint(0,255),random.randint(0,255))
     for led in range(0, 360):
         leds = [(255,255,255)]*360  #white  #set everything white,
-        rand_color = (random.randint(rand_color[0]-20, rand_color[0]+20),random.randint(rand_color[1]-20, rand_color[1]+20),random.randint(rand_color[2]-20, rand_color[2]+20))
+        rand_color = (random.randint(rand_color[0]-50, rand_color[0]+50),random.randint(rand_color[1]-50, rand_color[1]+50),random.randint(rand_color[2]-20, rand_color[2]+20))
         leds[355-led] = rand_color       #set 5 leds another colour, incrementing position each frame
         leds[355-led+1] = rand_color
         leds[355-led+2] = rand_color
@@ -59,10 +59,11 @@ while True:                         #do this forever:
         if led == 355:              #if we reach the end go back;
             led = 0
         client.put_pixels(leds)     #place the latest frame on screen.
-        time.sleep(0.2)            #delay the frame a bit
+    time.sleep(1)            #delay the frame a bit
 
 #what can we improve?
 # random nodes each frame - set random generators for all pixel values across all leds. put_pixels every iteration.
 # random solid color each frame - save random generator into a variable, assign that var to all leds. put pixels eavery iteration.
+# random color limited to a base seed
 # random each loop - 
 # random each row?
