@@ -28,32 +28,40 @@ client.put_pixels(leds)
 # #    client.put_pixels(leds)
 # #    led = led - 1 #or reverse if you want
 
-led = 0
-while led<60: #scroll all rows at the same time
-    for rows in range(3): #first three rows left to right
-        leds[led + rows*60] = (0,0,255)
-    for rows in range(3,6): #last three rows reversed (right to left)
-        leds[59-led + rows*60] = (rows*20,50,255)
-    client.put_pixels(leds)
-    time.sleep(.1)
-    led = led + 1
+# led = 0
+# while led<60: #scroll all rows at the same time
+#     for rows in range(3): #first three rows left to right
+#         leds[led + rows*60] = (0,0,255)
+#     for rows in range(3,6): #last three rows reversed (right to left)
+#         leds[59-led + rows*60] = (rows*20,50,255)
+#     client.put_pixels(leds)
+#     time.sleep(.1)
+#     led = led + 1
 
 # reverse the last example.
 # do a scroll from the middle to the outside - two pixels moving away from each other.
 # reverse the scroll from the middle
 # do a snake, 5 pixels long, returns to start when it hits the end
 
+import random
+
+
 while True:                         #do this forever:
-    for led in range(0, 360, 60):
+    for led in range(0, 360):
         leds = [(255,255,255)]*360  #white  #set everything white,
-        leds[355-led] = (0,0,255)       #set 5 leds another colour, incrementing position each frame
-        leds[355-led+1] = (0,0,255)
-        leds[355-led+2] = (0,0,255)
-        leds[355-led+3] = (0,0,255)
-        leds[355-led+4] = (0,0,255)
+        rand_color = (random.randint(0,255),random.randint(0,255),random.randint(0,255))
+        leds[355-led] = rand_color       #set 5 leds another colour, incrementing position each frame
+        leds[355-led+1] = rand_color
+        leds[355-led+2] = rand_color
+        leds[355-led+3] = rand_color
+        leds[355-led+4] = rand_color
         if led == 355:              #if we reach the end go back;
             led = 0
         client.put_pixels(leds)     #place the latest frame on screen.
-        time.sleep(0.02)            #delay the frame a bit
+        time.sleep(0.2)            #delay the frame a bit
 
 #what can we improve?
+# random nodes each frame - set random generators for all pixel values across all leds. put_pixels every iteration.
+# random solid color each frame - 
+# random each loop - 
+# random each row?
