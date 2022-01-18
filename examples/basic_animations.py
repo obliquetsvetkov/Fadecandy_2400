@@ -44,16 +44,16 @@ client.put_pixels(leds)
 # do a snake, 5 pixels long, returns to start when it hits the end
 
 while True:                         #do this forever:
-    for led in range(355)           #for a range the size of our strip - 5: 
+    for led in range(0, 360, 60):
         leds = [(255,255,255)]*360  #white  #set everything white,
-        leds[led] = (0,0,255)       #set 5 leds another colour, incrementing position each frame
-        leds[led+1] = (0,0,255)
-        leds[led+2] = (0,0,255)
-        leds[led+3] = (0,0,255)
-        leds[led+4] = (0,0,255)
-        if led == 255:              #if we reach the end go back;
+        leds[355-led] = (0,0,255)       #set 5 leds another colour, incrementing position each frame
+        leds[355-led+1] = (0,0,255)
+        leds[355-led+2] = (0,0,255)
+        leds[355-led+3] = (0,0,255)
+        leds[355-led+4] = (0,0,255)
+        if led == 355:              #if we reach the end go back;
             led = 0
         client.put_pixels(leds)     #place the latest frame on screen.
         time.sleep(0.02)            #delay the frame a bit
 
-what can we improve?
+#what can we improve?
