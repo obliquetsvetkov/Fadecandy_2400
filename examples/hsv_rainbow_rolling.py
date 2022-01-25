@@ -28,6 +28,7 @@ for hue in range(360): # shift through the entire colour spectrum
     #else:
     pixels.append(rgb) #for loop runs 360 times; each LED gets a slightly different hue. 
     #we have a rainbow of 360 LEDs in a list, ready to be shifted around
+    print(pixels)
 
 while True:
     for i in range(360):
@@ -35,4 +36,5 @@ while True:
         # This rolls the entire tuple forward.
         #print pixels #debug
         pixels = numpy.roll(pixels,3) #roll by 3 because func seems to not care about tuples and rolled elements from them by 1.
-        sleep(0.02) #speed of animation controlled through this
+        print(pixels)
+        sleep(0.2) #speed of animation controlled through this
