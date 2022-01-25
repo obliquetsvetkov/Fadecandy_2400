@@ -2,6 +2,12 @@ import tkinter as tk
 
 window = tk.Tk()
 
+
+for i in range(3):
+    window.columnconfigure(i, weight = i+1, minsize = 75)
+    window.rowconfigure(i, weight = i+1, minsize = 75)
+
+
 for row in range(3):
     for col in range(3):
         frame = tk.Frame(master = window, relief = tk.RAISED, borderwidth = 1)
