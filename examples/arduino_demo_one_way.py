@@ -7,5 +7,5 @@ time.sleep(2)
 
 
 while True:
-	data = int(arduino.readline().decode('utf-8')) # make sure to terminate the line with a '\n' symbol from arduino (should be default)
+	data = int(arduino.readline().decode('utf-8')) # works for default println behaviour. use str() if you're sending large datasets.
 	print(data)
